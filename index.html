@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Easy Twitter Boostrap Modal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Le javascript -->
+  <script src="assets/scripts/jquery-1.7.min.js"></script>
+  <script src="assets/scripts/bootstrap.min.js"></script>
+
+  <!-- Le styles -->
+  <link href="assets/css/bootstrap.css" rel="stylesheet">
+  <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+  <!-- Layout Helper -->
+  <script src="assets/scripts/layout_helper_popup.js"></script>
+
+  <script type="text/javascript">
+    function firedEvent() {
+      LayoutHelperPopup.GetModalObject().find('a.click_me').bind('click', function(event){
+        event.preventDefault();
+
+        $(this).html('This was clicked !');
+        $(this).unbind('click');
+      });
+    }
+
+    function firedEventFooter() {
+      LayoutHelperPopup.GetModalObject().find('.some_trigger').bind('click', function(event){
+        event.preventDefault();
+
+        LayoutHelperPopup.Modal('Title', 'Some Event Triggered');
+
+        $(this).unbind('click');
+      });
+    }
+
+    $(document).ready(function(){
+      $('#easy_modal').click(function(){
+        LayoutHelperPopup.Modal('Title', 'Simple Modal');
+      });
+
+      $('#large_modal').click(function(){
+        LayoutHelperPopup.Modal('Title', 'Simple Modal Large', true, false, true);
+      });
+
+      $('#fire_modal').click(function(){
+        LayoutHelperPopup.Modal('Title',
+                                'Simple Modal With fired event after render <a class="click_me">Click Me</a>',
+                                true, 'firedEvent', false);
+      });
+
+      $('#fire_modal_footer').click(function(){
+        LayoutHelperPopup.Modal('Title', 'Simple Modal With fired event and custom footer',
+                                '<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>'
+                                + '<button class="btn btn-primary some_trigger">Click Me</button>', 'firedEventFooter', false);
+      });
+
+      $('#modal_error').click(function(){
+        LayoutHelperPopup.ShowErrors('Invalid Email');
+      });
+
+      $('#modal_errors').click(function(){
+        LayoutHelperPopup.ShowErrors(['Invalid Name', 'Invalid Email']);
+      });
+
+    });
+  </script>
+
+  <style type="text/css">
+    body {
+      padding-top: 60px;
+      padding-bottom: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="hero-unit">
+    <h3 class="text-info text-center">Easy Twitter Boostrap Modal</h3>
+    <div class="main-content">
+      <h4>Hello</h4>
+
+      <p>This is a class to help you take Twitter Bootstrap Modal to its full power, and have a easy way to do anything with it</p>
+      <p>This class is exceptional if you're planning to make a full AJAX Application</p>
+
+      <h4>Main Popup Trigger</h4>
+
+      <pre style="background-color:#ffc;border:1px solid #cc9;"><span title="javascript/javascript" style="color:#000000;">LayoutHelperPopup</span><span title="javascript/javascript/symbol" style="color:#008000;">.</span><span title="javascript/javascript/oodynamic" style="color:#555599;">Modal</span><span title="javascript/javascript/symbol" style="color:#008000;">(</span><span title="javascript/javascript/method" style="color:#993333;">title</span><span title="javascript/javascript/symbol" style="color:#008000;">,</span><span title="javascript/javascript" style="color:#000000;"> content</span><span title="javascript/javascript/symbol" style="color:#008000;">,</span><span title="javascript/javascript" style="color:#000000;"> footer</span><span title="javascript/javascript/symbol" style="color:#008000;">,</span><span title="javascript/javascript" style="color:#000000;"> after_load</span><span title="javascript/javascript/symbol" style="color:#008000;">,</span><span title="javascript/javascript" style="color:#000000;"> large_popup</span><span title="javascript/javascript/symbol" style="color:#008000;">)</span></pre>
+
+      <h4>Available Functions</h4>
+      <pre style="background-color:#ffc;border:1px solid #cc9;"><span title="javascript/javascript" style="color:#000000;">LayoutHelperPopup</span><span title="javascript/javascript/symbol" style="color:#008000;">.</span><span title="javascript/javascript/oodynamic" style="color:#555599;">ShowErrors</span><span title="javascript/javascript/symbol" style="color:#008000;">(</span><span title="javascript/javascript" style="color:#000000;">errors</span><span title="javascript/javascript/symbol" style="color:#008000;">)</span><span title="javascript/javascript/symbol" style="color:#008000;">;</span><span title="javascript/javascript" style="color:#000000;">
+LayoutHelperPopup</span><span title="javascript/javascript/symbol" style="color:#008000;">.</span><span title="javascript/javascript/oodynamic" style="color:#555599;">Modalfunction</span><span title="javascript/javascript/symbol" style="color:#008000;">(</span><span title="javascript/javascript/method" style="color:#993333;">title</span><span title="javascript/javascript/symbol" style="color:#008000;">,</span><span title="javascript/javascript" style="color:#000000;"> content</span><span title="javascript/javascript/symbol" style="color:#008000;">,</span><span title="javascript/javascript" style="color:#000000;"> footer</span><span title="javascript/javascript/symbol" style="color:#008000;">,</span><span title="javascript/javascript" style="color:#000000;"> after_load</span><span title="javascript/javascript/symbol" style="color:#008000;">,</span><span title="javascript/javascript" style="color:#000000;"> large_popup</span><span title="javascript/javascript/symbol" style="color:#008000;">)</span><span title="javascript/javascript/symbol" style="color:#008000;">;</span><span title="javascript/javascript" style="color:#000000;">
+LayoutHelperPopup</span><span title="javascript/javascript/symbol" style="color:#008000;">.</span><span title="javascript/javascript/oodynamic" style="color:#555599;">GetModalObject</span><span title="javascript/javascript/symbol" style="color:#008000;">(</span><span title="javascript/javascript/symbol" style="color:#008000;">)</span><span title="javascript/javascript/symbol" style="color:#008000;">;</span><span title="javascript/javascript" style="color:#000000;">
+LayoutHelperPopup</span><span title="javascript/javascript/symbol" style="color:#008000;">.</span><span title="javascript/javascript/oodynamic" style="color:#555599;">ModalClose</span><span title="javascript/javascript/symbol" style="color:#008000;">(</span><span title="javascript/javascript/symbol" style="color:#008000;">)</span><span title="javascript/javascript/symbol" style="color:#008000;">;</span></pre>
+
+      <h5>Params : </h5>
+
+      <ul>
+        <li>Title
+          <ul>
+            <li>
+              This is the title of the popup
+            </li>
+          </ul>
+        </li>
+        <li>Content
+          <ul>
+            <li>
+              This is the content of the popup
+            </li>
+          </ul>
+        </li>
+        <li>Footer
+          <ul>
+            <li>
+              This is the footer of the popup
+            </li>
+            <li>Available params : false, true, string.
+              <ul>
+                <li>If this is set to true, the footer is included.</li>
+                <li>If this is set to false, the footer will be ignored, not added</li>
+                <li>If this is a html string, the html will be placed in the footer</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>After_load
+          <ul>
+            <li>
+              This is the action triggered after the popup has been rendered
+            </li>
+            <li>
+              Get the popup jquery object using : LayoutHelperPopup.GetModalObject() and use find to navigate
+            </li>
+          </ul>
+        </li>
+        <li>Large Popup
+          <ul>
+            <li>
+              This has 3 options, true, false, string
+              <ul>
+                <li>If this is set to true, the popup will be 90% of the screen.</li>
+                <li>If this is set to false, popup will be normal</li>
+                <li>If this is a html string, the popup will receive the width from this variable</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Examples</h4>
+
+      <h5>Simple Usage</h5>
+      <div>
+        <button class="btn btn-primary" id="easy_modal">
+          Example
+        </button>
+        <h6>Code Behind</h6>
+        <pre style="background-color:#ffc;border:1px solid #cc9;"><span title="javascript/javascript" style="color:#000000;">LayoutHelperPopup</span><span title="javascript/javascript/symbol" style="color:#008000;">.</span><span title="javascript/javascript/oodynamic" style="color:#555599;">Modal</span><span title="javascript/javascript/symbol" style="color:#008000;">(</span><span title="javascript/javascript/single_string/start" style="color:#ff0000;">'</span><span title="javascript/javascript/single_string" style="color:#ff0000;">Title</span><span title="javascript/javascript/single_string/end" style="color:#ff0000;">'</span><span title="javascript/javascript/symbol" style="color:#008000;">,</span> <span title="javascript/javascript/single_string/start" style="color:#ff0000;">'</span><span title="javascript/javascript/single_string" style="color:#ff0000;">Simple Modal</span><span title="javascript/javascript/single_string/end" style="color:#ff0000;">'</span><span title="javascript/javascript/symbol" style="color:#008000;">)</span><span title="javascript/javascript/symbol" style="color:#008000;">;</span></pre>
+      </div>
+
+      <h5>Simple Modal Large</h5>
+      <div>
+        <button class="btn btn-primary" id="large_modal">
+          Example
+        </button>
+        <h6>Code Behind</h6>
+        <pre style="background-color:#ffc;border:1px solid #cc9;"><span title="javascript/javascript" style="color:#000000;">LayoutHelperPopup</span><span title="javascript/javascript/symbol" style="color:#008000;">.</span><span title="javascript/javascript/oodynamic" style="color:#555599;">Modal</span><span title="javascript/javascript/symbol" style="color:#008000;">(</span><span title="javascript/javascript/single_string/start" style="color:#ff0000;">'</span><span title="javascript/javascript/single_string" style="color:#ff0000;">Title</span><span title="javascript/javascript/single_string/end" style="color:#ff0000;">'</span><span title="javascript/javascript/symbol" style="color:#008000;">,</span> <span title="javascript/javascript/single_string/start" style="color:#ff0000;">'</span><span title="javascript/javascript/single_string" style="color:#ff0000;">Simple Modal Large</span><span title="javascript/javascript/single_string/end" style="color:#ff0000;">'</span><span title="javascript/javascript/symbol" style="color:#008000;">,</span> <span title="javascript/javascript/keyword" style="color:#000000;font-weight:bold;">true</span><span title="javascript/javascript/symbol" style="color:#008000;">,</span> <span title="javascript/javascript/keyword" style="color:#000000;font-weight:bold;">false</span><span title="javascript/javascript/symbol" style="color:#008000;">,</span> <span title="javascript/javascript/keyword" style="color:#000000;font-weight:bold;">true</span><span title="javascript/javascript/symbol" style="color:#008000;">)</span><span title="javascript/javascript/symbol" style="color:#008000;">;</span></pre>
+      </div>
+
+      <h5>Simple Usage With Event Fired</h5>
+      <div>
+        <button class="btn btn-primary" id="fire_modal">
+          Example
+        </button>
+        <h6>Code Behind</h6>
+<pre style="background-color:#ffc;border:1px solid #cc9;"><span title="javascript/javascript" style="color:#000000;">        LayoutHelperPopup</span><span title="javascript/javascript/symbol" style="color:#008000;">.</span><span title="javascript/javascript/oodynamic" style="color:#555599;">Modal</span><span title="javascript/javascript/symbol" style="color:#008000;">(</span><span title="javascript/javascript/single_string/start" style="color:#ff0000;">'</span><span title="javascript/javascript/single_string" style="color:#ff0000;">Title</span><span title="javascript/javascript/single_string/end" style="color:#ff0000;">'</span><span title="javascript/javascript/symbol" style="color:#008000;">,</span>
+                                <span title="javascript/javascript/single_string/start" style="color:#ff0000;">'</span><span title="javascript/javascript/single_string" style="color:#ff0000;">Simple Modal With fired event after render &lt;a class="click_me"&gt;Click Me&lt;/a&gt;</span><span title="javascript/javascript/single_string/end" style="color:#ff0000;">'</span><span title="javascript/javascript/symbol" style="color:#008000;">,</span>
+                                <span title="javascript/javascript/keyword" style="color:#000000;font-weight:bold;">true</span><span title="javascript/javascript/symbol" style="color:#008000;">,</span> <span title="javascript/javascript/single_string/start" style="color:#ff0000;">'</span><span title="javascript/javascript/single_string" style="color:#ff0000;">firedEvent</span><span title="javascript/javascript/single_string/end" style="color:#ff0000;">'</span><span title="javascript/javascript/symbol" style="color:#008000;">,</span> <span title="javascript/javascript/keyword" style="color:#000000;font-weight:bold;">false</span><span title="javascript/javascript/symbol" style="color:#008000;">)</span><span title="javascript/javascript/symbol" style="color:#008000;">;</span></pre>
+
+
+        <pre style="background-color:#ffc;border:1px solid #cc9;">    <span title="javascript/javascript/keyword" style="color:#000000;font-weight:bold;">function</span><span title="javascript/javascript" style="color:#000000;"> firedEvent</span><span title="javascript/javascript/symbol" style="color:#008000;">(</span><span title="javascript/javascript/symbol" style="color:#008000;">)</span> <span title="javascript/javascript/symbol" style="color:#008000;">{</span><span title="javascript/javascript" style="color:#000000;">
+            LayoutHelperPopup</span><span title="javascript/javascript/symbol" style="color:#008000;">.</span><span title="javascript/javascript/oodynamic" style="color:#555599;">GetModalObject</span><span title="javascript/javascript/symbol" style="color:#008000;">(</span><span title="javascript/javascript/symbol" style="color:#008000;">)</span><span title="javascript/javascript/symbol" style="color:#008000;">.</span><span title="javascript/javascript/method" style="color:#993333;">find</span><span title="javascript/javascript/symbol" style="color:#008000;">(</span><span title="javascript/javascript/single_string/start" style="color:#ff0000;">'</span><span title="javascript/javascript/single_string" style="color:#ff0000;">a.click_me</span><span title="javascript/javascript/single_string/end" style="color:#ff0000;">'</span><span title="javascript/javascript/symbol" style="color:#008000;">)</span><span title="javascript/javascript/symbol" style="color:#008000;">.</span><span title="javascript/javascript/oodynamic" style="color:#555599;">bind</span><span title="javascript/javascript/symbol" style="color:#008000;">(</span><span title="javascript/javascript/single_string/start" style="color:#ff0000;">'</span><span title="javascript/javascript/single_string" style="color:#ff0000;">click</span><span title="javascript/javascript/single_string/end" style="color:#ff0000;">'</span><span title="javascript/javascript/symbol" style="color:#008000;">,</span> <span title="javascript/javascript/keyword" style="color:#000000;font-weight:bold;">function</span><span title="javascript/javascript/symbol" style="color:#008000;">(</span><span title="javascript/javascript" style="color:#000000;">event</span><span title="javascript/javascript/symbol" style="color:#008000;">)</span><span title="javascript/javascript/symbol" style="color:#008000;">{</span><span title="javascript/javascript" style="color:#000000;">
+              event</span><span title="javascript/javascript/symbol" style="color:#008000;">.</span><span title="javascript/javascript/oodynamic" style="color:#555599;">preventDefault</span><span title="javascript/javascript/symbol" style="color:#008000;">(</span><span title="javascript/javascript/symbol" style="color:#008000;">)</span><span title="javascript/javascript/symbol" style="color:#008000;">;</span><span title="javascript/javascript" style="color:#000000;">
+
+              $</span><span title="javascript/javascript/symbol" style="color:#008000;">(</span><span title="javascript/javascript/object" style="color:#339933;font-weight:bold;">this</span><span title="javascript/javascript/symbol" style="color:#008000;">)</span><span title="javascript/javascript/symbol" style="color:#008000;">.</span><span title="javascript/javascript/oodynamic" style="color:#555599;">html</span><span title="javascript/javascript/symbol" style="color:#008000;">(</span><span title="javascript/javascript/single_string/start" style="color:#ff0000;">'</span><span title="javascript/javascript/single_string" style="color:#ff0000;">This was clicked !</span><span title="javascript/javascript/single_string/end" style="color:#ff0000;">'</span><span title="javascript/javascript/symbol" style="color:#008000;">)</span><span title="javascript/javascript/symbol" style="color:#008000;">;</span><span title="javascript/javascript" style="color:#000000;">
+              $</span><span title="javascript/javascript/symbol" style="color:#008000;">(</span><span title="javascript/javascript/object" style="color:#339933;font-weight:bold;">this</span><span title="javascript/javascript/symbol" style="color:#008000;">)</span><span title="javascript/javascript/symbol" style="color:#008000;">.</span><span title="javascript/javascript/oodynamic" style="color:#555599;">unbind</span><span title="javascript/javascript/symbol" style="color:#008000;">(</span><span title="javascript/javascript/single_string/start" style="color:#ff0000;">'</span><span title="javascript/javascript/single_string" style="color:#ff0000;">click</span><span title="javascript/javascript/single_string/end" style="color:#ff0000;">'</span><span title="javascript/javascript/symbol" style="color:#008000;">)</span><span title="javascript/javascript/symbol" style="color:#008000;">;</span>
+            <span title="javascript/javascript/symbol" style="color:#008000;">}</span><span title="javascript/javascript/symbol" style="color:#008000;">)</span><span title="javascript/javascript/symbol" style="color:#008000;">;</span>
+          <span title="javascript/javascript/symbol" style="color:#008000;">}</span>
+        </pre>
+
+      </div>
+
+      <h5>Simple Usage With Event Fired And Custom Footer</h5>
+      <div>
+        <button class="btn btn-primary" id="fire_modal_footer">
+          Example
+        </button>
+
+        <h6>Core Behind</h6>
+
+        <pre style="background-color:#ffc;border:1px solid #cc9;"><span title="javascript/javascript" style="color:#000000;">LayoutHelperPopup</span><span title="javascript/javascript/symbol" style="color:#008000;">.</span><span title="javascript/javascript/oodynamic" style="color:#555599;">Modal</span><span title="javascript/javascript/symbol" style="color:#008000;">(</span><span title="javascript/javascript/single_string/start" style="color:#ff0000;">'</span><span title="javascript/javascript/single_string" style="color:#ff0000;">Title</span><span title="javascript/javascript/single_string/end" style="color:#ff0000;">'</span><span title="javascript/javascript/symbol" style="color:#008000;">,</span> <span title="javascript/javascript/single_string/start" style="color:#ff0000;">'</span><span title="javascript/javascript/single_string" style="color:#ff0000;">Simple Modal With fired event and custom footer</span><span title="javascript/javascript/single_string/end" style="color:#ff0000;">'</span><span title="javascript/javascript/symbol" style="color:#008000;">,</span>
+                                <span title="javascript/javascript/single_string/start" style="color:#ff0000;">'</span><span title="javascript/javascript/single_string" style="color:#ff0000;">&lt;button class="btn" data-dismiss="modal" aria-hidden="true"&gt;Close&lt;/button&gt;</span><span title="javascript/javascript/single_string/end" style="color:#ff0000;">'</span>
+                                <span title="javascript/javascript/symbol" style="color:#008000;">+</span> <span title="javascript/javascript/single_string/start" style="color:#ff0000;">'</span><span title="javascript/javascript/single_string" style="color:#ff0000;">&lt;button class="btn btn-primary some_trigger"&gt;Click Me&lt;/button&gt;</span><span title="javascript/javascript/single_string/end" style="color:#ff0000;">'</span><span title="javascript/javascript/symbol" style="color:#008000;">,</span> <span title="javascript/javascript/single_string/start" style="color:#ff0000;">'</span><span title="javascript/javascript/single_string" style="color:#ff0000;">firedEventFooter</span><span title="javascript/javascript/single_string/end" style="color:#ff0000;">'</span><span title="javascript/javascript/symbol" style="color:#008000;">,</span> <span title="javascript/javascript/keyword" style="color:#000000;font-weight:bold;">false</span><span title="javascript/javascript/symbol" style="color:#008000;">)</span><span title="javascript/javascript/symbol" style="color:#008000;">;</span>
+        </pre>
+
+        <pre style="background-color:#ffc;border:1px solid #cc9;"><span title="javascript/javascript/keyword" style="color:#000000;font-weight:bold;">function</span><span title="javascript/javascript" style="color:#000000;"> firedEventFooter</span><span title="javascript/javascript/symbol" style="color:#008000;">(</span><span title="javascript/javascript/symbol" style="color:#008000;">)</span> <span title="javascript/javascript/symbol" style="color:#008000;">{</span><span title="javascript/javascript" style="color:#000000;">
+          LayoutHelperPopup</span><span title="javascript/javascript/symbol" style="color:#008000;">.</span><span title="javascript/javascript/oodynamic" style="color:#555599;">GetModalObject</span><span title="javascript/javascript/symbol" style="color:#008000;">(</span><span title="javascript/javascript/symbol" style="color:#008000;">)</span><span title="javascript/javascript/symbol" style="color:#008000;">.</span><span title="javascript/javascript/method" style="color:#993333;">find</span><span title="javascript/javascript/symbol" style="color:#008000;">(</span><span title="javascript/javascript/single_string/start" style="color:#ff0000;">'</span><span title="javascript/javascript/single_string" style="color:#ff0000;">.some_trigger</span><span title="javascript/javascript/single_string/end" style="color:#ff0000;">'</span><span title="javascript/javascript/symbol" style="color:#008000;">)</span><span title="javascript/javascript/symbol" style="color:#008000;">.</span><span title="javascript/javascript/oodynamic" style="color:#555599;">bind</span><span title="javascript/javascript/symbol" style="color:#008000;">(</span><span title="javascript/javascript/single_string/start" style="color:#ff0000;">'</span><span title="javascript/javascript/single_string" style="color:#ff0000;">click</span><span title="javascript/javascript/single_string/end" style="color:#ff0000;">'</span><span title="javascript/javascript/symbol" style="color:#008000;">,</span> <span title="javascript/javascript/keyword" style="color:#000000;font-weight:bold;">function</span><span title="javascript/javascript/symbol" style="color:#008000;">(</span><span title="javascript/javascript" style="color:#000000;">event</span><span title="javascript/javascript/symbol" style="color:#008000;">)</span><span title="javascript/javascript/symbol" style="color:#008000;">{</span><span title="javascript/javascript" style="color:#000000;">
+            event</span><span title="javascript/javascript/symbol" style="color:#008000;">.</span><span title="javascript/javascript/oodynamic" style="color:#555599;">preventDefault</span><span title="javascript/javascript/symbol" style="color:#008000;">(</span><span title="javascript/javascript/symbol" style="color:#008000;">)</span><span title="javascript/javascript/symbol" style="color:#008000;">;</span><span title="javascript/javascript" style="color:#000000;">
+
+            LayoutHelperPopup</span><span title="javascript/javascript/symbol" style="color:#008000;">.</span><span title="javascript/javascript/oodynamic" style="color:#555599;">Modal</span><span title="javascript/javascript/symbol" style="color:#008000;">(</span><span title="javascript/javascript/single_string/start" style="color:#ff0000;">'</span><span title="javascript/javascript/single_string" style="color:#ff0000;">Title</span><span title="javascript/javascript/single_string/end" style="color:#ff0000;">'</span><span title="javascript/javascript/symbol" style="color:#008000;">,</span> <span title="javascript/javascript/single_string/start" style="color:#ff0000;">'</span><span title="javascript/javascript/single_string" style="color:#ff0000;">Some Event Triggered</span><span title="javascript/javascript/single_string/end" style="color:#ff0000;">'</span><span title="javascript/javascript/symbol" style="color:#008000;">)</span><span title="javascript/javascript/symbol" style="color:#008000;">;</span><span title="javascript/javascript" style="color:#000000;">
+
+            $</span><span title="javascript/javascript/symbol" style="color:#008000;">(</span><span title="javascript/javascript/object" style="color:#339933;font-weight:bold;">this</span><span title="javascript/javascript/symbol" style="color:#008000;">)</span><span title="javascript/javascript/symbol" style="color:#008000;">.</span><span title="javascript/javascript/oodynamic" style="color:#555599;">unbind</span><span title="javascript/javascript/symbol" style="color:#008000;">(</span><span title="javascript/javascript/single_string/start" style="color:#ff0000;">'</span><span title="javascript/javascript/single_string" style="color:#ff0000;">click</span><span title="javascript/javascript/single_string/end" style="color:#ff0000;">'</span><span title="javascript/javascript/symbol" style="color:#008000;">)</span><span title="javascript/javascript/symbol" style="color:#008000;">;</span>
+          <span title="javascript/javascript/symbol" style="color:#008000;">}</span><span title="javascript/javascript/symbol" style="color:#008000;">)</span><span title="javascript/javascript/symbol" style="color:#008000;">;</span>
+          <span title="javascript/javascript/symbol" style="color:#008000;">}</span>
+        </pre>
+      </div>
+
+      <h5>Simple Usage For Displaying Error</h5>
+        <div>
+        <button class="btn btn-primary" id="modal_error">
+          Example
+        </button>
+
+        <h6>Core Behind</h6>
+        <pre style="background-color:#ffc;border:1px solid #cc9;"><span title="javascript/javascript" style="color:#000000;">LayoutHelperPopup</span><span title="javascript/javascript/symbol" style="color:#008000;">.</span><span title="javascript/javascript/oodynamic" style="color:#555599;">ShowErrors</span><span title="javascript/javascript/symbol" style="color:#008000;">(</span><span title="javascript/javascript/single_string/start" style="color:#ff0000;">'</span><span title="javascript/javascript/single_string" style="color:#ff0000;">Invalid Email</span><span title="javascript/javascript/single_string/end" style="color:#ff0000;">'</span><span title="javascript/javascript/symbol" style="color:#008000;">)</span><span title="javascript/javascript/symbol" style="color:#008000;">;</span></pre>
+
+      </div>
+      <div class="clear"></div>
+
+      <h5>Simple Usage For Displaying Errors</h5>
+      <div>
+        <button class="btn btn-primary" id="modal_errors">
+          Example
+        </button>
+
+        <h6>Core Behind</h6>
+        <pre style="background-color:#ffc;border:1px solid #cc9;"><span title="javascript/javascript" style="color:#000000;">LayoutHelperPopup</span><span title="javascript/javascript/symbol" style="color:#008000;">.</span><span title="javascript/javascript/oodynamic" style="color:#555599;">ShowErrors</span><span title="javascript/javascript/symbol" style="color:#008000;">(</span><span title="javascript/javascript/symbol" style="color:#008000;">[</span><span title="javascript/javascript/single_string/start" style="color:#ff0000;">'</span><span title="javascript/javascript/single_string" style="color:#ff0000;">Invalid Name</span><span title="javascript/javascript/single_string/end" style="color:#ff0000;">'</span><span title="javascript/javascript/symbol" style="color:#008000;">,</span> <span title="javascript/javascript/single_string/start" style="color:#ff0000;">'</span><span title="javascript/javascript/single_string" style="color:#ff0000;">Invalid Email</span><span title="javascript/javascript/single_string/end" style="color:#ff0000;">'</span><span title="javascript/javascript/symbol" style="color:#008000;">]</span><span title="javascript/javascript/symbol" style="color:#008000;">)</span><span title="javascript/javascript/symbol" style="color:#008000;">;</span></pre>
+
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; Easy-Development 2013</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
