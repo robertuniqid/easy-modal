@@ -13,10 +13,10 @@ LayoutHelperPopup = {
         var html = '<div>';
 
         if(typeof errors == "string")
-          html += '<p class="alert alert-error">' + errors + '</p>';
+          html += '<p class="alert alert-danger">' + errors + '</p>';
         else if(typeof errors == Array || typeof errors == "object")
           $.each(errors,function(index, error){
-            html += '<p class="alert alert-error">' + error + '</p>'
+            html += '<p class="alert alert-danger">' + error + '</p>'
           });
 
         html += '</div>';
@@ -36,12 +36,15 @@ LayoutHelperPopup = {
         }
 
         footer = typeof footer == "undefined"
-                  || footer == true ? '<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>' : footer;
+                  || footer == true ? '<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Close</button>' : footer;
 
 
         var html = '<div id="' + currentClass.settings.modal_id + '" ' +
-                        'class="modal hide fade" ' +
-                        'tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">';
+                        'class="modal fade" ' +
+                        '>';
+
+        html += '<div class="modal-dialog">';
+        html  += '<div class="modal-content">';
 
         html += '<div class="modal-header">' +
                     '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>' +
@@ -54,6 +57,8 @@ LayoutHelperPopup = {
             html += '<div class="modal-body">' + content + '</div>'
                  +  '<div class="modal-footer">' + footer + '</div>';
 
+        html    += '</div>';
+        html  += '</div>';
         html += '</div>';
 
         $('body').append(html);
@@ -73,7 +78,7 @@ LayoutHelperPopup = {
                     return -($(this).width() / 2);
                 }
             });
-        } else if(parseInt(large_popup) != 0) {
+        } else if(typeof large_popup !== "undefined" && parseInt(large_popup) != 0) {
             theModal.modal('show').css({
                 'width': function () {
                     return large_popup;
