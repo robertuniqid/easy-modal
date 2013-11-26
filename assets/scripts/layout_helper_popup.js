@@ -70,21 +70,17 @@ LayoutHelperPopup = {
         });
 
         if(large_popup == true) {
-            theModal.modal('show').css({
+            theModal.modal('show');
+            theModal.find('> .modal-dialog').css({
                 'width': function () {
                     return ($(document).width() * .9) + 'px';
-                },
-                'margin-left': function () {
-                    return -($(this).width() / 2);
                 }
             });
         } else if(typeof large_popup !== "undefined" && parseInt(large_popup) != 0) {
-            theModal.modal('show').css({
+            theModal.modal('show');
+            theModal.find('> .modal-dialog').css({
                 'width': function () {
                     return large_popup;
-                },
-                'margin-left': function () {
-                    return -($(this).width() / 2);
                 }
             });
         } else {
