@@ -5,3 +5,5 @@ Easy Modal provides a javascript Class to create an Easy Way to trigger Twitter 
 
 Just download the code and open the index.html file, and you will find everything there.
 Each possible action is described and has a button to test it.
+
+Preview Available Here : http://demonstration.easy-development.com/easy-modal
