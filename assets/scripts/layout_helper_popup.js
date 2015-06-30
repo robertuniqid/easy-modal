@@ -65,7 +65,7 @@ LayoutHelperPopup = {
 
         var theModal = $('#' + currentClass.settings.modal_id);
 
-        theModal.on('hidden', function () {
+        theModal.on('hidden.bs.modal', function () {
             $('#' + currentClass.settings.modal_id).remove();
         });
 
